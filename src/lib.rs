@@ -1,6 +1,22 @@
+pub mod configuration;
+pub mod routes;
+pub mod startup;
+
 use actix_web::{web, App, HttpResponse, HttpServer};
 use actix_web::dev::Server;
 use std::net::TcpListener;
+
+pub fn run(listner: TcpListener) -> Result<Server, std::io::Error> {
+    let server = HttpServer::new(|| {
+        App::new()
+            .route("/health_check", web::get().to(health_check))
+            .route("/subscriptions", web::post().to(subscribe))
+    })
+    .listen(listner)?
+    .run();
+    
+    Ok(server)
+}
 
 #[derive(serde::Deserialize)]
 struct FormData {
@@ -14,16 +30,4 @@ async fn health_check() -> HttpResponse {
 
 async fn subscribe(_form: web::Form<FormData>) -> HttpResponse {
     HttpResponse::Ok().finish()
-}
-
-pub fn run(listner: TcpListener) -> Result<Server, std::io::Error> {
-    let server = HttpServer::new(|| {
-        App::new()
-            .route("/health_check", web::get().to(health_check))
-            .route("/subscriptions", web::post().to(subscribe))
-    })
-    .listen(listner)?
-    .run();
-    
-    Ok(server)
 }
