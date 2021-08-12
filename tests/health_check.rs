@@ -26,7 +26,6 @@ async fn health_check_works() {
 }
 
 #[actix_rt::test]
-
 async fn subscribe_returns_a_200_for_valid_form_data() {
     let app_address = spawn_app();
     let configuration = get_configuration().expect("Failed to read configuration");
@@ -57,7 +56,6 @@ async fn subscribe_returns_a_200_for_valid_form_data() {
 }
 
 #[actix_rt::test]
-
 async fn subscribe_returns_a_400_when_data_is_missing() {
     let app_address = spawn_app();
     let client = reqwest::Client::new();
