@@ -1,7 +1,7 @@
+use sqlx::PgPool;
+use std::net::TcpListener;
 use zero2prod::configuration::get_configuration;
 use zero2prod::startup::run;
-use sqlx::{Connection, PgConnection};
-use std::net::TcpListener;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
