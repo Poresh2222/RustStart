@@ -9,7 +9,7 @@ services:
     github:
       branch: main
       deploy_on_push: true
-      repo: mrPoresh/zero2prod
+      repo: mrPoresh/RustStart
     health_check:
       http_path: /health_check
     http_port: 8000
