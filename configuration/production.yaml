@@ -6,4 +6,4 @@ database:
 
 email_client:
   base_url: "https://api.postmarkapp.com"
-  sender_email: "something@gmail.com" ##//
+  sender_email: "mrPoresh@zero2prod.com" ##//
