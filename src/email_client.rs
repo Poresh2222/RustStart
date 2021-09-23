@@ -2,7 +2,6 @@ use crate::domain::SubscriberEmail;     //7.2.6.3
 use reqwest::Client;
 
 
-//#[derive(Clone)]
 pub struct EmailClient {
 
     http_client: Client,
